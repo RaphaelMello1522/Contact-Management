@@ -51,6 +51,12 @@ namespace Contact_Management.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,ContactNumber,Email")] Contact contact)
         {
+            var contactValidation = _context.Contact.Where(c => c.Email.Equals(contact.Email) && c.ContactNumber.Equals(contact.ContactNumber)).Any();
+            if (contactValidation == true)
+            {
+                ModelState.AddModelError(String.Empty, "This email and contact is being used");
+                return View();
+            }
             if (ModelState.IsValid)
             {
                 contact.Id = Guid.NewGuid();
