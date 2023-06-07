@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Contact_Management.Models;
 
 namespace Contact_Management.Data
 {
@@ -9,5 +10,6 @@ namespace Contact_Management.Data
             : base(options)
         {
         }
+        public DbSet<Contact_Management.Models.Contact> Contact { get; set; } = default!;
     }
 }

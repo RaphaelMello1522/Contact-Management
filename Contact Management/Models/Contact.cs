@@ -5,7 +5,7 @@ namespace Contact_Management.Models
 {
     public class Contact
     {
-        [DatabaseGenerated(databaseGeneratedOption:.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid Id { get; set; }
         [Required]
